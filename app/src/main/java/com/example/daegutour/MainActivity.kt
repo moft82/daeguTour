@@ -1,139 +1,82 @@
 package com.example.daegutour
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.nio.charset.Charset
+import android.view.LayoutInflater
+import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.custom_tab_button.view.*
 
-class MainActivity : AppCompatActivity() {
+
+
+class MainActivity() : AppCompatActivity() {
+    private lateinit var mContext : Context
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val wifi = readCSVWifi()
-        val toilet = readCSVToilet()
-        val tourguide = readCSVTourguide()
+
+        mContext = applicationContext
+        initViewPager()
 
     }
-    fun readCSVWifi():List<Map<String, String>> {
+    private fun createView(tabName: String): View {
+        var tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab_button, null)
 
-        try {
-            val ins: InputStream = getResources().openRawResource(R.raw.wifi)
-            var reader: BufferedReader? = null
-            reader = BufferedReader(InputStreamReader(ins, Charset.forName("utf8")))
-            val data = mutableListOf<Map<String, String>>()
-            var line = reader.readLine()
-
-//            Column line pass
-            line = reader.readLine()
-            while (line != null) {
-                var tokens = line.split('|')
-                val dataMap = mutableMapOf<String, String>()
-
-                dataMap["name"] = tokens[0]
-                dataMap["latitude"] = tokens[1]
-                dataMap["longitude"] = tokens[2]
-                dataMap["management"] = tokens[3]
-                dataMap["phone_number"] = tokens[4]
-                dataMap["adress"] = tokens[5]
-                dataMap["service"] = tokens[6]
-                dataMap["location"] = tokens[7]
-                dataMap["SSID"] = tokens[8]
-                data.add(dataMap)
-                line = reader.readLine()
+        tabView.tab_text.text = tabName
+        // Set Icon image
+        when (tabName) {
+            "Home" -> {
+                tabView.tab_logo.setImageResource(R.drawable.tour)
+                return tabView
             }
-            Log.d("csv data read", "Wifi CSV Data Read Success")
-            return data
-        } catch (e: Exception) {
-            Log.d("error", "CSV Data Read Error")
-
-            return mutableListOf<Map<String, String>>()
-        }
-    }
-
-    fun readCSVToilet():List<Map<String, String>>{
-
-        try{
-            val ins : InputStream = getResources().openRawResource(R.raw.toilet)
-            var reader : BufferedReader? = null
-            reader  = BufferedReader(InputStreamReader(ins, Charset.forName("utf8")))
-            val data = mutableListOf<Map<String, String>>()
-            var line = reader.readLine()
-
-//            Column line pass
-            line = reader.readLine()
-            while( line != null ) {
-                var tokens = line.split('|')
-                val dataMap = mutableMapOf<String, String>()
-
-                dataMap["name"] = tokens[0]
-                dataMap["latitude"] = tokens[1]
-                dataMap["longitude"] = tokens[2]
-                dataMap["management"] = tokens[3]
-                dataMap["phone_number"] = tokens[4]
-                dataMap["adress"] = tokens[5]
-                dataMap["operate_time"] = tokens[6]
-                dataMap["type"] = tokens[7]
-                dataMap["uni_sex"] = tokens[8]
-                data.add(dataMap)
-                line = reader.readLine()
+            "Spot" -> {
+                tabView.tab_logo.setImageResource(android.R.drawable.ic_menu_myplaces)
+                return tabView
             }
-            Log.d("csv data read","Toilet CSV Data Read Success")
-            return data
-        }
-        catch(e : Exception){
-            Log.d("error", "Toilet CSV Data Read Error")
-            Log.d("error", e.toString())
-
-            return mutableListOf<Map<String, String>>()
-        }
-
-    }
-
-    fun readCSVTourguide():List<Map<String, String>> {
-
-        try {
-            val ins: InputStream = getResources().openRawResource(R.raw.tour_guide)
-            var reader: BufferedReader? = null
-            reader = BufferedReader(InputStreamReader(ins, Charset.forName("utf8")))
-            val data = mutableListOf<Map<String, String>>()
-            var line = reader.readLine()
-
-//            Column line pass
-            line = reader.readLine()
-            while (line != null) {
-                var tokens = line.split('|')
-                val dataMap = mutableMapOf<String, String>()
-
-                dataMap["name"] = tokens[0]
-                dataMap["latitude"] = tokens[1]
-                dataMap["longitude"] = tokens[2]
-                dataMap["management"] = tokens[3]
-                dataMap["phone_number"] = tokens[4]
-                dataMap["adress"] = tokens[5]
-                dataMap["service"] = tokens[6]
-                dataMap["location"] = tokens[7]
-                dataMap["operate_time(summer)"] = tokens[8]
-                dataMap["operate_time(winter)"] = tokens[8]
-                dataMap["holiday"] = tokens[8]
-                dataMap["english"] = tokens[8]
-                dataMap["japanese"] = tokens[8]
-                dataMap["chinese"] = tokens[8]
-                dataMap["desc"] = tokens[8]
-                dataMap["page"] = tokens[8]
-
-                data.add(dataMap)
-                line = reader.readLine()
+            "Restaurant" -> {
+                tabView.tab_logo.setImageResource(android.R.drawable.ic_menu_view)
+                return tabView
             }
-            Log.d("csv data read", "Tour Guide CSV Data Read Success")
-            return data
-        } catch (e: Exception) {
-            Log.d("error", "Tour Guide CSV Data Read Error")
-
-            return mutableListOf<Map<String, String>>()
+            "Facility" -> {
+                tabView.tab_logo.setImageResource(android.R.drawable.ic_menu_view)
+                return tabView
+            }
+            else -> {
+                return tabView
+            }
         }
     }
+    private fun initViewPager(){
+        // Fragments
+        val homeFragment = HomeFragmentTab()
+        homeFragment.name = "Home"
+        val spotFragment = SpotFragmentTab()
+        spotFragment.name = "Spot"
+        val restaurantFragmentTab = RestaurantFragmentTab()
+        restaurantFragmentTab.name = "Restaurant"
+        val facilityFragmentTab = FacilityFragmentTab()
+        facilityFragmentTab.name = "Facility"
+
+        // Page Adapter
+        val adapter = PageAdapter(supportFragmentManager)
+        adapter.addItems(homeFragment)
+        adapter.addItems(spotFragment)
+        adapter.addItems(restaurantFragmentTab)
+        adapter.addItems(facilityFragmentTab)
+
+        main_viewPager.adapter = adapter // 뷰페이저에 adapter 장착
+        main_tablayout.setupWithViewPager(main_viewPager) // 탭레이아웃과 뷰페이저를 연동
+
+
+        main_tablayout.getTabAt(0)?.setCustomView(createView("Home"))
+        main_tablayout.getTabAt(1)?.setCustomView(createView("Spot"))
+        main_tablayout.getTabAt(2)?.setCustomView(createView("Restaurant"))
+        main_tablayout.getTabAt(3)?.setCustomView(createView("Facility"))
+
+    }
+
+
 
 }
