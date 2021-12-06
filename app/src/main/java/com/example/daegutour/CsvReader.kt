@@ -119,4 +119,37 @@ class CsvReader {
             return mutableListOf<Map<String, String>>()
         }
     }
+
+    fun readListData(ins: InputStream): List<Map<String, String>> {
+        try {
+            var reader: BufferedReader? = null
+            reader = BufferedReader(InputStreamReader(ins, Charset.forName("utf8")))
+            Log.d("dataread","readStart")
+            val data = mutableListOf<Map<String, String>>()
+            var line = reader.readLine()
+
+//            Column line pass
+            line = reader.readLine()
+            Log.d("dataread","Column pass")
+            while (line != null) {
+                var tokens = line.split('|')
+                val dataMap = mutableMapOf<String, String>()
+                dataMap["fname"] = tokens[0]
+                dataMap["name"] = tokens[1]
+                dataMap["address"] = tokens[2]
+                dataMap["desc"] = tokens[3]
+                dataMap["latitude"] = tokens[5]
+                dataMap["longitude"] = tokens[6]
+                data.add(dataMap)
+                line = reader.readLine()
+            }
+            Log.d("csv data read", "Spot CSV Data Read Success")
+            return data
+        } catch (e: Exception) {
+            Log.d("error", "Spot CSV Data Read Error")
+            Log.d("error", e.toString())
+            return mutableListOf<Map<String, String>>()
+        }
+    }
+
 }
