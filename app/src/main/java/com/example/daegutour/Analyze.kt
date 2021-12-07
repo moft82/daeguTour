@@ -8,5 +8,8 @@ class Analyze : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analyze)
 
+        // Get intent Extra
+        val intent = intent
+        val name = intent.getStringExtra("name")
     }
 }

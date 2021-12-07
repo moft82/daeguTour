@@ -11,4 +11,5 @@ data class ListData (
     val desc : String,
     val latitude : Float,
     val longitude : Float
+
 ): Parcelable

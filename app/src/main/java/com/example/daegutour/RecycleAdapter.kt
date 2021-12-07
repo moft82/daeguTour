@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 
 class RecycleAdapter(private val context: Context)
     : RecyclerView.Adapter<RecycleAdapter.ViewHolder>(){
-
     var datas = mutableListOf<ListData>()
     interface OnItemClickListener{
         fun onItemClick(v:View, data: ListData, pos : Int)
@@ -38,7 +37,6 @@ class RecycleAdapter(private val context: Context)
         private val txtName: TextView = itemView.findViewById(R.id.name)
         private val txtAddress: TextView = itemView.findViewById(R.id.address)
         private val imgProfile: ImageView = itemView.findViewById(R.id.img)
-
 
         fun bind(item:ListData) {
             txtName.text = item.name

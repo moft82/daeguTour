@@ -33,7 +33,7 @@ class TourSpot : AppCompatActivity() {
 
     private fun toList(ins: Int) {
         val intent: Intent = Intent(this, ListView::class.java)
-        intent.putExtra("fname", ins)
+        intent.putExtra("fileName", ins)
         startActivity(intent)
     }
 }

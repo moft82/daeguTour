@@ -40,13 +40,13 @@ class Detail : AppCompatActivity() {
 
     private fun toAnalyze(name: String) {
         val intent = Intent(this, ListView::class.java)
-        intent.putExtra("fname", name)
+        intent.putExtra("name", name)
         startActivity(intent)
     }
 
 
     private fun toFacility(name : String, latitude : Float, longitude : Float) {
-        val intent = Intent(this, ListView::class.java)
+        val intent = Intent(this, Facility::class.java)
         intent.putExtra("name", name)
         intent.putExtra("latitude", latitude)
         intent.putExtra("longitude", longitude)

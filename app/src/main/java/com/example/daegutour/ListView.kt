@@ -8,19 +8,17 @@ import kotlinx.android.synthetic.main.activity_list_view.*
 
 
 class ListView : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_view)
 
         // Get CSV File Name
         val intent = intent
-        val fname = intent.getIntExtra("fname", R.raw.tour_history)
+        val fileName = intent.getIntExtra("fileName", R.raw.tour_history)
 
         // Read CSV
         val csvReader = CsvReader()
-        val data = csvReader.readListData(resources.openRawResource(fname))
+        val data = csvReader.readListData(resources.openRawResource(fileName))
 
         // Init Recycler
         intiRecycler(data = data)

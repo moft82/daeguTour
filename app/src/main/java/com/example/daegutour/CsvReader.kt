@@ -13,7 +13,7 @@ class CsvReader {
             var reader: BufferedReader? = null
             reader = BufferedReader(InputStreamReader(ins, Charset.forName("utf8")))
             val data = mutableListOf<Map<String, String>>()
-            var line: String?
+            var line = reader.readLine()
 
 //            Column line pass
             line = reader.readLine()
@@ -34,6 +34,7 @@ class CsvReader {
                 line = reader.readLine()
             }
             Log.d("csv data read", "Wifi CSV Data Read Success")
+            Log.d("csv data", data[0]["latitude"].toString())
             return data
         } catch (e: Exception) {
             Log.d("error", "CSV Data Read Error")

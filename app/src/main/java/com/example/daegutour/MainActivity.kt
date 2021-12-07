@@ -3,6 +3,7 @@ package com.example.daegutour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,12 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun tourSpot() {
+    fun tourSpot(view : View) {
         val intent = Intent(this, TourSpot::class.java)
         startActivity(intent)
     }
 
-    fun restaurant(){
+    fun restaurant(view : View){
         val intent = Intent(this, Restaurant::class.java)
         startActivity(intent)
     }
