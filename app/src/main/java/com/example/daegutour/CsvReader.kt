@@ -13,12 +13,12 @@ class CsvReader {
             var reader: BufferedReader? = null
             reader = BufferedReader(InputStreamReader(ins, Charset.forName("utf8")))
             val data = mutableListOf<Map<String, String>>()
-            var line = reader.readLine()
+            var line: String?
 
 //            Column line pass
             line = reader.readLine()
             while (line != null) {
-                var tokens = line.split('|')
+                val tokens = line.split('|')
                 val dataMap = mutableMapOf<String, String>()
 
                 dataMap["name"] = tokens[0]
@@ -38,7 +38,7 @@ class CsvReader {
         } catch (e: Exception) {
             Log.d("error", "CSV Data Read Error")
             Log.d("error", e.toString())
-            return mutableListOf<Map<String, String>>()
+            return mutableListOf()
         }
     }
 
