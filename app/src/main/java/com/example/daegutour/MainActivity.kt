@@ -15,10 +15,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, TourSpot::class.java)
         startActivity(intent)
     }
-
-    fun restaurant(view : View){
-        val intent = Intent(this, Restaurant::class.java)
-        startActivity(intent)
-    }
-
 }

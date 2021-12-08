@@ -27,7 +27,9 @@ class Detail : AppCompatActivity() {
         val buttonFacility = findViewById<Button>(R.id.facility)
 
         buttonAnalyze.setOnClickListener{
-            toAnalyze(name = datas.name)
+            toAnalyze(name = datas.name,
+                data = datas
+            )
         }
         buttonFacility.setOnClickListener{
             toFacility(name = datas.name,
@@ -38,9 +40,10 @@ class Detail : AppCompatActivity() {
     }
 
 
-    private fun toAnalyze(name: String) {
-        val intent = Intent(this, ListView::class.java)
+    private fun toAnalyze(name: String, data:ListData) {
+        val intent = Intent(this, Analyze::class.java)
         intent.putExtra("name", name)
+        intent.putExtra("data", data)
         startActivity(intent)
     }
 

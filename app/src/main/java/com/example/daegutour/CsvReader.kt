@@ -135,12 +135,18 @@ class CsvReader {
             while (line != null) {
                 var tokens = line.split('|')
                 val dataMap = mutableMapOf<String, String>()
-                dataMap["fname"] = tokens[0]
+                dataMap["img"] = tokens[0]
                 dataMap["name"] = tokens[1]
                 dataMap["address"] = tokens[2]
                 dataMap["desc"] = tokens[3]
                 dataMap["latitude"] = tokens[5]
                 dataMap["longitude"] = tokens[6]
+                dataMap["google"] = tokens[7]
+                dataMap["naver"] = tokens[8]
+                dataMap["trip"] = tokens[9]
+                dataMap["avg"] = tokens[10]
+                dataMap["data"] = tokens[11]
+                dataMap["wordCloud"] = tokens[12]
                 data.add(dataMap)
                 line = reader.readLine()
             }

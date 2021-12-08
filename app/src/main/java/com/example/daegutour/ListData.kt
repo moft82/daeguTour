@@ -10,6 +10,11 @@ data class ListData (
     val img : Int,
     val desc : String,
     val latitude : Float,
-    val longitude : Float
-
+    val longitude : Float,
+    val data : Int,
+    val google : String,
+    val naver : String,
+    val trip : String,
+    val avg : String,
+    val wordCloud : Int
 ): Parcelable
