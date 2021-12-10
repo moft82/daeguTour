@@ -59,16 +59,16 @@ class Facility : AppCompatActivity(), OnMapReadyCallback {
         val switchTourGuide = findViewById<Switch>(R.id.tourguide_switch)
         val switchWifi = findViewById<Switch>(R.id.wifi_switch)
         switchToilet.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) markerVisibleSet(toiletMarker, mMap, true)
-            else markerVisibleSet(toiletMarker, mMap, false)
+            if (isChecked) markerVisibleSet(toiletMarker, true)
+            else markerVisibleSet(toiletMarker, false)
         }
         switchTourGuide.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) markerVisibleSet(tourGuideMarker, mMap, true)
-            else markerVisibleSet(tourGuideMarker, mMap, false)
+            if (isChecked) markerVisibleSet(tourGuideMarker, true)
+            else markerVisibleSet(tourGuideMarker, false)
         }
         switchWifi.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) markerVisibleSet(wifiMarker, mMap, true)
-            else markerVisibleSet(wifiMarker, mMap, false)
+            if (isChecked) markerVisibleSet(wifiMarker, true)
+            else markerVisibleSet(wifiMarker, false)
         }
 
 
@@ -89,7 +89,7 @@ class Facility : AppCompatActivity(), OnMapReadyCallback {
         Log.d("Marker", "Done")
         return markers
     }
-    fun markerVisibleSet(markers:List<Marker>, mMap: GoogleMap, is_visible:Boolean){
+    fun markerVisibleSet(markers:List<Marker>, is_visible:Boolean){
         val markerIterator = markers.iterator()
         while (markerIterator.hasNext()) {
             val marker = markerIterator.next()

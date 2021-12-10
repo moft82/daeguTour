@@ -15,4 +15,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, TourSpot::class.java)
         startActivity(intent)
     }
+
+    fun guide(view : View) {
+        val intent = Intent(this, Guide::class.java)
+        startActivity(intent)
+    }
 }
