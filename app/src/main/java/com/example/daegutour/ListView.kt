@@ -3,7 +3,6 @@ package com.example.daegutour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_list_view.*
 
@@ -39,7 +38,6 @@ class ListView : AppCompatActivity() {
                 val tokens = dataIterator.next()
                 val img =
                     resources.getIdentifier(tokens["img"].toString(), "drawable", packageName)
-                Log.d("wc", tokens["wordCloud"].toString())
                 val wordCloud =
                     resources.getIdentifier(tokens["wordCloud"].toString(), "drawable", packageName)
                 add(
