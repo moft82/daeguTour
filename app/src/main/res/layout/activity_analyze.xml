@@ -9,28 +9,73 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/analyze"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/mainColor"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:layout_marginTop="25dp"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/BackBtnImage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/img_topbar_arrowback"
+                android:clickable="true"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.468" />
 
-    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한눈에 보는 분석결과"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:text="Name"
+            android:textColor="@color/mainColor"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:text="평점"
-        android:textSize="15sp"
+        android:textColor="@color/mainColor"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
+
+
     <TextView
         android:id="@+id/avg"
         android:layout_width="wrap_content"
@@ -38,97 +83,104 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="25dp"
         android:text="평균 : "
-        android:textSize="10sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <TextView
-        android:id="@+id/avg_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:text="평균평점"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/google"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-    <TextView
+        <TextView
+            android:id="@+id/avg_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="10dp"
+            android:text="평균평점"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/google"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
         android:id="@+id/google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="25dp"
         android:text="구글 : "
-        android:textSize="10sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avg" />
 
-    <TextView
-        android:id="@+id/google_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:text="구글평점"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/google"
-        app:layout_constraintTop_toBottomOf="@+id/avg" />
+        <TextView
+            android:id="@+id/google_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="10dp"
+            android:text="구글평점"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/google"
+            app:layout_constraintTop_toBottomOf="@+id/avg" />
 
-    <TextView
+        <TextView
         android:id="@+id/naver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="25dp"
         android:text="네이버 : "
-        android:textSize="10sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/google" />
 
-    <TextView
-        android:id="@+id/naver_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:text="네이버평점"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/naver"
-        app:layout_constraintTop_toBottomOf="@+id/google_rate" />
+        <TextView
+            android:id="@+id/naver_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:text="네이버평점"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/naver"
+            app:layout_constraintTop_toBottomOf="@+id/google_rate" />
 
-    <TextView
+        <TextView
         android:id="@+id/trip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="25dp"
-        android:text="구글 : "
-        android:textSize="10sp"
+        android:text="트립어드바이저 : "
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/naver" />
 
-    <TextView
-        android:id="@+id/trip_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:text="구글평점"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/trip"
-        app:layout_constraintTop_toBottomOf="@+id/naver_rate" />
-
 
         <TextView
-        android:id="@+id/wordcloud"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="25dp"
-        android:text="워드클라우드"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trip" />
+            android:id="@+id/trip_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="156dp"
+            android:layout_marginLeft="156dp"
+            android:layout_marginTop="10dp"
+            android:text="트립어드바이저평점"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/trip"
+            app:layout_constraintTop_toBottomOf="@+id/naver_rate" />
+
+        <TextView
+            android:id="@+id/wordcloud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Worldcloud"
+            android:textColor="@color/mainColor"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trip" />
 
     <ImageView
         android:id="@+id/img"
