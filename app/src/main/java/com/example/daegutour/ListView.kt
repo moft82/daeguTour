@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_list_view.*
 
 
@@ -19,6 +20,12 @@ class ListView : AppCompatActivity() {
         // Read CSV
         val csvReader = CsvReader()
         val data = csvReader.readListData(resources.openRawResource(fileName))
+
+        val imgBack = findViewById<ImageView>(R.id.BackBtnImage)
+
+        imgBack.setOnClickListener {
+            this.onBackPressed()
+        }
 
         // Init Recycler
         intiRecycler(data = data)

@@ -2,6 +2,7 @@ package com.example.daegutour
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_analyze.*
 
@@ -22,5 +23,12 @@ class Analyze : AppCompatActivity() {
         naver_rate.text = data.naver
         trip_rate.text = data.trip
         Glide.with(this).load(data.wordCloud).into(img)
+
+        val imgBack = findViewById<ImageView>(R.id.BackBtnImage)
+
+        imgBack.setOnClickListener {
+            this.onBackPressed()
+        }
+
     }
 }

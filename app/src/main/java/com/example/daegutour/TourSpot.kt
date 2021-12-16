@@ -3,30 +3,31 @@ package com.example.daegutour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.cardview.widget.CardView
 
 class TourSpot : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tour_spot)
 
-        // Set Button
-        val button1 = findViewById<Button>(R.id.tour_culture)
-        val button2 = findViewById<Button>(R.id.tour_history)
-        val button3 = findViewById<Button>(R.id.tour_shop)
-        val button4 = findViewById<Button>(R.id.tour_nature)
+
+        val cardHistory = findViewById<CardView>(R.id.tour_history)
+        val cardCulture = findViewById<CardView>(R.id.tour_culture)
+        val cardShop = findViewById<CardView>(R.id.tour_shop)
+        val cardNature = findViewById<CardView>(R.id.tour_nature)
+
 
         // Set OnClickListener
-        button1.setOnClickListener{
+        cardCulture.setOnClickListener{
             toList(ins = R.raw.tour_culture)
         }
-        button2.setOnClickListener{
-            toList(ins =R.raw.tour_history)
+        cardHistory.setOnClickListener{
+            toList(ins = R.raw.tour_history)
         }
-        button3.setOnClickListener{
-            toList(ins  =R.raw.tour_shop)
+        cardShop.setOnClickListener{
+            toList(ins =R.raw.tour_shop)
         }
-        button4.setOnClickListener{
+        cardNature.setOnClickListener{
             toList(ins = R.raw.tour_nature)
         }
     }

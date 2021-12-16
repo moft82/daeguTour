@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -25,6 +26,11 @@ class Detail : AppCompatActivity() {
         // Button OnClickListener
         val buttonAnalyze = findViewById<Button>(R.id.analyze)
         val buttonFacility = findViewById<Button>(R.id.facility)
+        val imgBack = findViewById<ImageView>(R.id.BackBtnImage)
+
+        imgBack.setOnClickListener {
+            this.onBackPressed()
+        }
 
         buttonAnalyze.setOnClickListener{
             toAnalyze(name = datas.name,
@@ -37,6 +43,7 @@ class Detail : AppCompatActivity() {
                 longitude = datas.longitude
             )
         }
+
     }
 
 
